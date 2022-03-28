@@ -1,0 +1,5 @@
+VAR x = 10, y = 3 AS INT
+START
+x = x * y
+OUTPUT: x
+STOP

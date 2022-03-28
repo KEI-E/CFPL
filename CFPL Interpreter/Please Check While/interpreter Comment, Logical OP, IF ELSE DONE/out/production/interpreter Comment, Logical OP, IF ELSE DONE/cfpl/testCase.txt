@@ -1,0 +1,15 @@
+VAR a = 1 AS INT
+*comment
+VAR b = 2 AS INT
+VAR c = "TRUE" AS BOOL
+START
+*comment
+IF(a == 1 AND b <> 2)
+START
+OUTPUT: a
+STOP
+ELSE
+START
+OUTPUT: c
+STOP
+STOP
