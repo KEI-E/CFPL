@@ -20,7 +20,7 @@ public class Lexer {
 
     public static void main(String[] args) throws IOException{
         System.out.print("FILE: " + Paths.get(".").toAbsolutePath().normalize().toString() + "/src/main/java/cfpl/testCase.txt\n");
-        runFile(String.valueOf(Paths.get("A:\\GitHubDesktop\\Repositories\\CS322\\Week 9\\1 Comma Update\\Please Check While\\interpreter Comment, Logical OP, IF ELSE DONE\\interpreter - Backup - Copy\\src\\main\\java\\cfpl\\testCase.txt")));
+        runFile(String.valueOf(Paths.get("A:\\GitHubDesktop\\Repositories\\CFPL\\CFPL Interpreter\\Please Check While\\interpreter Comment, Logical OP, IF ELSE DONE\\interpreter - Backup - Copy\\src\\main\\java\\cfpl\\testCase.txt")));
     }
 
     private static void runFile(String path) throws IOException {
