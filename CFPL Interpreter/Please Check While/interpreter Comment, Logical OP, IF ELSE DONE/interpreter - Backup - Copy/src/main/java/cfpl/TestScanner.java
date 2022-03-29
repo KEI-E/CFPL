@@ -75,9 +75,11 @@ public class TestScanner {
             case '\n':
                         line++;
                         break;
-            case '"':   addToken(DOUBLE_QUOTES);
-                        //string(); 
+            case '"':
+                        string();
                         break;
+            //for boolean type
+            case '”': addToken(DOUBLE_QUOTES); break;
             case 'o':
                         if (match('r')) {
                             addToken(OR);
