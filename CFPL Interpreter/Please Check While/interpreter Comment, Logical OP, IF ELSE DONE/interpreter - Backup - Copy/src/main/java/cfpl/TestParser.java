@@ -285,12 +285,15 @@ class TestParser { private static class ParseError extends RuntimeException {}
     private List<Stmt> block() 
     {
         List<Stmt> statements = new ArrayList<>();
-
-        if (match(VAR)) 
-          throw error(peek() ,"'VAR' inside 'START' 'STOP'");
     
         while (!check(STOP) && !isAtEnd()) 
+        {
           statements.add(cfplStatement());  
+
+          if (match(VAR)) 
+            throw error(peek() ,"'VAR' inside 'START' 'STOP'");
+        }
+         
           //statements.add(delcaration());
 
           consume(STOP, "Expect STOP after block.");

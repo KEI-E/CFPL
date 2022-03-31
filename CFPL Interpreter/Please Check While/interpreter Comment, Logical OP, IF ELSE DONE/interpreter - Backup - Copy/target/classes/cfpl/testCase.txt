@@ -1,4 +1,7 @@
+VAR x = 1, y AS INT
 START
+y = 2
+VAR z = 3 AS INT
 *comment
-OUTPUT: 5*5
+OUTPUT: x + y + z
 STOP
