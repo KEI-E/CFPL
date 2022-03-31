@@ -170,6 +170,44 @@ class TestParser { private static class ParseError extends RuntimeException {}
         return statements;
     }
 
+    //several re-assignments inside START STOP
+    private List<Stmt> assInsideBlock() 
+    {
+        List<Stmt> statements = new ArrayList<>();
+        Expr initializer = null;
+
+        if (match(EQUAL)) 
+        {
+          if(match(DOUBLE_QUOTES)) // if "" is found, value is going to be bool
+            initializer = assignBool();
+          else if(match(APOS))    // if '' is found, value is going to be char
+            initializer = assignChar();
+          else
+            initializer = expression();
+        }
+
+        //for many reassignments declared with comma
+        while(match(COMMA))
+        {
+          initializer = null;
+
+          if (match(EQUAL)) 
+          {
+            if(match(DOUBLE_QUOTES)) // if "" is found, value is going to be bool
+              initializer = assignBool();
+            else if(match(APOS))    // if '' is found, value is going to be char
+              initializer = assignChar();
+            else
+              initializer = expression();
+          }
+        }
+
+        if (match(EQUAL)) 
+          initializer = expression();
+        
+        return statements;
+    }
+
     private Stmt whileStatement() { // WHILE Statement
       consume(LEFT_PAREN, "Expect '(' after 'while'.");
       Expr condition = expression();
@@ -190,6 +228,8 @@ class TestParser { private static class ParseError extends RuntimeException {}
     {
         try 
         {
+          if(match(COMMA))
+            return new Stmt.Block(assInsideBlock());
           if (match(OUTPUT) && match(COLON)) 
             return printStatement();
           if (match(VAR))
