@@ -253,7 +253,10 @@ class TestParser { private static class ParseError extends RuntimeException {}
           statements.add(cfplStatement());  
           //statements.add(delcaration());
 
-        consume(STOP, "Expect STOP after block.");
+          consume(STOP, "Expect STOP after block.");
+
+          if(match(VAR))
+            throw error(peek() ,"'VAR' found outside 'START' 'STOP'.");
 
         return statements;
     }
