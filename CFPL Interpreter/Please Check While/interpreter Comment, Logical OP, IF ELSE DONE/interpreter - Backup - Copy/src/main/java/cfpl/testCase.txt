@@ -1,5 +1,4 @@
-VAR a, b, c = 10 AS INT
 START
-a = 10, b = 5
-OUTPUT: a + b + c
+*comment
+OUTPUT: 5*5
 STOP

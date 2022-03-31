@@ -1,5 +1,4 @@
-VAR x = 10, y = 3 AS INT
 START
-x = x * y
-OUTPUT: x
+*comment
+OUTPUT: 5*5
 STOP
