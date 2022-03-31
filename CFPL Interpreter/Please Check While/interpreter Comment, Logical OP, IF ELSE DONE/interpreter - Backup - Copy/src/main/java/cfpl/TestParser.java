@@ -9,6 +9,7 @@ class TestParser { private static class ParseError extends RuntimeException {}
 
     private final List<Token> tokens;
     private int current = 0;
+    boolean varDeclared = false;              
   
     TestParser(List<Token> tokens) {
       this.tokens = tokens;
@@ -480,6 +481,13 @@ class TestParser { private static class ParseError extends RuntimeException {}
     }
 
     private ParseError error(Token token, String message) {
+        boolean isReservedWord = TestScanner.reservedWords().get(token.lexeme) != null;
+
+        if(isReservedWord && !varDeclared)
+            if(!varDeclared)
+                Lexer.error(token, "Reserved Word can't be used as a variable.");
+            else
+                Lexer.error(token, message);
         Lexer.error(token, message);
         return new ParseError();
     }
