@@ -43,7 +43,7 @@ public class TestScanner {
             case ':':   addToken(COLON); break;
             case '&':   addToken(PLUS); break;
             case '*':   
-                if(comment()){
+                if(isAlpha(peek())){
                     while (peek() != '\n' && !isAtEnd()) advance();
                 }
                 else addToken(STAR);
