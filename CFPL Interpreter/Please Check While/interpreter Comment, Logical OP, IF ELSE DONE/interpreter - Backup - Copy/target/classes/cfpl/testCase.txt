@@ -1,7 +1,7 @@
 VAR x = 1, y AS INT
 START
 y = 2
-VAR z = 3 AS INT
 *comment
 OUTPUT: x + y + z
 STOP
+VAR z = 3 AS INT
