@@ -244,5 +244,8 @@ public class TestScanner {
         keywords.put("TRUE",   TRUE);
         keywords.put("WHILE",  WHILE);
     }
-    
+    public static Map<String, TokenType> reservedWords()
+    {
+        return keywords;
+    }
 }
